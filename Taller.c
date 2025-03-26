@@ -58,7 +58,7 @@ int main()
 
             do
             {
-                printf("Ingrese la cantidad inicial en stock: ");
+                printf("Ingrese la cantidad inicial en stock: ");   
                 scanf("%d", &stock);
                 if (stock == 0)
                 {
