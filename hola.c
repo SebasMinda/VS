@@ -17,25 +17,25 @@ int main()
         {
             printf(Verde "\n\t|================ Menu ================|\n" Reset);
             printf(Verde "\t| " Reset);
-            printf("1. Registrar Producto");
+            printf(Celeste"1. Registrar Producto"Reset);
             printf(Verde "                |\n" Reset);
             printf(Verde "\t| " Reset);
-            printf("2. Vender producto");
+            printf(Celeste"2. Vender producto"Reset);
             printf(Verde "                   |\n" Reset);
             printf(Verde "\t| " Reset);
-            printf("3. Reabastecer producto");
+            printf(Celeste"3. Reabastecer producto"Reset);
             printf(Verde "              |\n" Reset);
             printf(Verde "\t| " Reset);
-            printf("4. Mostrar informacion del producto");
+            printf(Celeste"4. Mostrar informacion del producto"Reset);
             printf(Verde "  |\n" Reset);
             printf(Verde "\t| " Reset);
-            printf("5. Mostrar total de ganancias");
+            printf(Celeste"5. Mostrar total de ganancias"Reset);
             printf(Verde "        |\n" Reset);
             printf(Verde "\t| " Reset);
-            printf("6. Salir");
+            printf(Celeste"6. Salir"Reset);
             printf(Verde "                             |\n" Reset);
             printf(Verde "\t|======================================|\n" Reset);
-            printf("\tSeleccione una opcion: ");
+            printf(Celeste"\tSeleccione una opcion: "Reset);
             fflush(stdin);
             status = scanf("%d", &opcion);
             if (status == 0)
