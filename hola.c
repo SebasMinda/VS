@@ -56,13 +56,14 @@ int main()
             do
             {
                 printf("\nIngrese el ID del producto: ");
-                status=scanf("%d", &id);
-                if (id <= 0||status==0)
+                status = scanf("%d", &id);
+                if (id <= 0 || status == 0)
                 {
                     printf(Rojo "Id de producto no valido. Solo escriba numeros del 1 en adelante. \n" Reset);
-                    while (getchar() != '\n');
+                    while (getchar() != '\n')
+                        ;
                 }
-            } while (id <= 0||status==0);
+            } while (id <= 0 || status == 0);
             printf("Ingrese el nombre del producto: ");
             fflush(stdin);
             fgets(nombre, 30, stdin);
@@ -90,7 +91,8 @@ int main()
                 if (status == 0)
                 {
                     printf(Rojo "Error ingrese un numero. \n" Reset);
-                    while (getchar() != '\n');
+                    while (getchar() != '\n')
+                        ;
                 }
                 else if (precio <= 0)
                 {
