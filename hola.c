@@ -13,18 +13,34 @@ int main()
 
     do
     {
-        printf(Verde"\n\t================Menu================\n"Reset);
-        printf("\t1. Registrar Producto\n");
-        printf("\t2. Vender producto\n");
-        printf("\t3. Reabastecer producto\n");
-        printf("\t4. Mostrar informacion del producto\n");
-        printf("\t5. Mostrar total de ganancias\n");
-        printf("\t6. Salir\n");
-        printf(Verde"\t====================================\n"Reset);
+        do
+        {
+        printf(Verde"\n\t|================ Menu ================|\n"Reset);
+        printf(Verde"\t| "Reset);
+        printf("1. Registrar Producto");
+        printf(Verde"                |\n"Reset);
+        printf(Verde"\t| "Reset);
+        printf("2. Vender producto");
+        printf(Verde"                   |\n"Reset);
+        printf(Verde"\t| "Reset);
+        printf("3. Reabastecer producto");
+        printf(Verde"              |\n"Reset);
+        printf(Verde"\t| "Reset);
+        printf("4. Mostrar informacion del producto");
+        printf(Verde"  |\n"Reset);
+        printf(Verde"\t| "Reset);
+        printf("5. Mostrar total de ganancias");
+        printf(Verde"        |\n"Reset);
+        printf(Verde"\t| "Reset);
+        printf("6. Salir");
+        printf(Verde"                             |\n"Reset);
+        printf(Verde"\t|======================================|\n"Reset);
         printf("\tSeleccione una opcion: ");
         fflush(stdin);
         scanf("%d", &opcion);
 
+        } while (opcion<1||opcion>6||status==0);
+        
         switch (opcion)
         {
         case 1:
@@ -47,10 +63,10 @@ int main()
                 status=scanf("%d", &stock);
                 if (status==0)
                 {
-                    printf(Rojo"Ingrese un numero. "Reset);
+                    printf(Rojo"Error ingrese un numero. "Reset);
                     while (getchar() != '\n');
                 }
-                if (stock <= 0)
+                else if (stock <= 0)
                 {
                     printf(Rojo"Stock Invalido.\n"Reset);
                 }
@@ -62,7 +78,7 @@ int main()
                 status=scanf("%f", &precio);
                 if (status==0)
                 {
-                    printf(Rojo"Ingrese un numero. "Reset);
+                    printf(Rojo"Error ingrese un numero. "Reset);
                     while (getchar() != '\n');
                 }
                 if (precio <= 0)
@@ -75,7 +91,7 @@ int main()
         case 2:
             if (productoregistrado != 1)
             {
-                printf(Verde"\nPor favor primero registrar el producto.\n"Reset);
+                printf(Rojo"\nPor favor primero registrar el producto.\n"Reset);
                 break;
             }
             if (stock <= 0)
@@ -89,13 +105,18 @@ int main()
                 status=scanf("%d", &cantidad);
                 if (status==0)
                 {
-                    printf(Rojo"Ingrese un numero. "Reset);
+                    printf(Rojo"Error ingrese un numero. "Reset);
                     while (getchar() != '\n');
                 }
                 if (cantidad > stock)
                 {
                     printf(Rojo"No existe la cantidad necesaria para esta venta. Vuelva a ingresar la cantidad. \n"Reset);
                 }
+                else if (cantidad<=0)
+                {
+                    printf(Rojo"La cantidad a veder debe ser mayor a 0. \n"Reset);
+                }
+                
 
             } while (cantidad < 1 || cantidad > stock||status==0);
             do
@@ -104,7 +125,7 @@ int main()
                 status=scanf("%f", &descuento);
                 if (status==0)
                 {
-                    printf(Rojo"Ingrese un numero.\n"Reset);
+                    printf(Rojo"Error ingrese un numero. \n"Reset);
                     while (getchar() != '\n');
                 }
                 if (descuento < 0 || descuento > 100)
@@ -122,9 +143,25 @@ int main()
                 descuento = venta * (descuento / 100);
                 venta = venta - descuento;
             }
-            printf(Verde"El total de la venta es $%.2f\n", venta, Reset);
+            if (cantidad==1)
+            {
+                printf(Verde"La cantidad vendida fue de %d unidad\n", cantidad, Reset);
+            }
+            else
+            {
+                printf(Verde"La cantidad vendida fue de %d unidades\n", cantidad, Reset);
+            } 
+            printf(Verde"El total de la venta es de $%.2f\n", venta, Reset);
             total_ganancias += venta;
             stock -= cantidad;
+            if (stock==1)
+            {
+                printf(Verde"El total stock actual es de %d unidad\n", stock, Reset);
+            }
+            else
+            {
+                printf(Verde"El total stock actual es de %d unidades\n", stock, Reset);
+            } 
             break;
 
         case 3:
@@ -139,10 +176,10 @@ int main()
                 status=scanf("%d", &cantidad);
                 if (status==0)
                 {
-                    printf(Rojo"Ingrese un numero. "Reset);
+                    printf(Rojo"Error ingrese un numero. "Reset);
                     while (getchar() != '\n');
                 }
-                if (cantidad <= 0)
+                else if (cantidad <= 0)
                 {
                     printf(Rojo"La cantidad debe ser mayor a 0. Vuelva a ingresar la cantidad. \n"Reset);
                 }
