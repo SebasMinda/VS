@@ -56,12 +56,13 @@ int main()
             do
             {
                 printf("\nIngrese el ID del producto: ");
-                scanf("%d", &id);
-                if (id <= 0)
+                status=scanf("%d", &id);
+                if (id <= 0||status==0)
                 {
-                    printf(Rojo "Id de producto no valido.\n" Reset);
+                    printf(Rojo "Id de producto no valido. Solo escriba numeros del 1 en adelante. \n" Reset);
+                    while (getchar() != '\n');
                 }
-            } while (id <= 0);
+            } while (id <= 0||status==0);
             printf("Ingrese el nombre del producto: ");
             fflush(stdin);
             fgets(nombre, 30, stdin);
@@ -72,7 +73,7 @@ int main()
                 status = scanf("%d", &stock);
                 if (status == 0)
                 {
-                    printf(Rojo "Error ingrese un numero. " Reset);
+                    printf(Rojo "Error ingrese un numero. \n" Reset);
                     while (getchar() != '\n')
                         ;
                 }
@@ -88,11 +89,10 @@ int main()
                 status = scanf("%f", &precio);
                 if (status == 0)
                 {
-                    printf(Rojo "Error ingrese un numero. " Reset);
-                    while (getchar() != '\n')
-                        ;
+                    printf(Rojo "Error ingrese un numero. \n" Reset);
+                    while (getchar() != '\n');
                 }
-                if (precio <= 0)
+                else if (precio <= 0)
                 {
                     printf(Rojo "Precio Invalido.\n" Reset);
                 }
@@ -107,7 +107,7 @@ int main()
             }
             if (stock <= 0)
             {
-                printf(Rojo "El stock actual del producto es de 0 unidades, por favor reabastecer el producto\n" Reset);
+                printf(Rojo "El stock actual del producto es de 0 unidades, por favor reabastecer el producto.\n" Reset);
                 break;
             }
             do
@@ -120,13 +120,13 @@ int main()
                     while (getchar() != '\n')
                         ;
                 }
+                else if (cantidad <= 0)
+                {
+                    printf(Rojo "La cantidad a vender debe ser mayor a 0. \n" Reset);
+                }
                 if (cantidad > stock)
                 {
                     printf(Rojo "No existe la cantidad necesaria para esta venta. Vuelva a ingresar la cantidad. \n" Reset);
-                }
-                else if (cantidad <= 0)
-                {
-                    printf(Rojo "La cantidad a veder debe ser mayor a 0. \n" Reset);
                 }
 
             } while (cantidad < 1 || cantidad > stock || status == 0);
@@ -210,7 +210,7 @@ int main()
                 break;
             }
             printf(Celeste "\n\t----------------\n" Reset);
-            printf("\tInformación del producto:\n");
+            printf("\tInformacion del producto:\n");
             printf("\tID: %d\n", id);
             printf("\tNombre: %s", nombre);
             printf("\tStock disponible: %d\n", stock);
